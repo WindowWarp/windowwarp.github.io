@@ -84,6 +84,7 @@ h2 { font: 700 clamp(28px, 3.6vw, 38px)/1.1 var(--display); font-stretch: 112%; 
 .card p { margin: 0; color: var(--muted); font-size: 15px; flex: 1 }
 .card .meta { font: 500 12px var(--mono); color: var(--muted) }
 .card .btn { justify-content: center }
+.btn.soon { color: var(--muted); border-style: dashed; cursor: default }
 .tag { align-self: flex-start; font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted) }
 .tag.ok { color: var(--green); border-color: currentColor }
 
@@ -213,21 +214,21 @@ footer span { margin-right: auto }
           <h3>Windows</h3>
           <p>Windows 10 and 11. Uses your graphics card to encode, so games keep their frame rate.</p>
           <span class="meta">Microsoft Store · free</span>
-          <a class="btn" href="#download" aria-disabled="true">Get it from Microsoft</a>
+          <span class="btn soon">Coming soon</span>
         </div>
         <div class="card">
           <span class="tag">Coming soon</span>
           <h3>Linux</h3>
           <p>KDE Plasma and GNOME on Wayland, including Steam Deck in desktop mode.</p>
           <span class="meta">Flatpak · WindowWarp.flatpak · free</span>
-          <a class="btn" href="#download" aria-disabled="true">Download Flatpak</a>
+          <span class="btn soon">Coming soon</span>
         </div>
         <div class="card">
           <span class="tag">Coming soon</span>
           <h3>Android TV &amp; phone</h3>
           <p>Android TV, Chromecast with Google TV and Android phones. Android 8 or newer.</p>
           <span class="meta">Google Play · 7 days free</span>
-          <a class="btn" href="#download" aria-disabled="true">Get it on Google Play</a>
+          <span class="btn soon">Coming soon</span>
         </div>
       </div>
     </div>
