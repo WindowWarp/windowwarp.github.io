@@ -79,7 +79,6 @@ h2 { font: 700 clamp(28px, 3.6vw, 38px)/1.1 var(--display); font-stretch: 112%; 
 .steps h3 { font: 600 20px/1.25 var(--display); font-stretch: 100%; margin: 6px 0 6px }
 .steps p { margin: 0; color: var(--muted) }
 
-.dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0 }
 .card h3 { margin: 0; font: 600 19px/1.2 var(--display); font-stretch: 100% }
 .card p { margin: 0; color: var(--muted); font-size: 15px; flex: 1 }
@@ -88,6 +87,23 @@ h2 { font: 700 clamp(28px, 3.6vw, 38px)/1.1 var(--display); font-stretch: 112%; 
 .btn.soon { color: var(--muted); border-style: dashed; cursor: default }
 .tag { align-self: flex-start; font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted) }
 .tag.ok { color: var(--green); border-color: currentColor }
+.tag.review { color: var(--amber); border-color: currentColor }
+.groups { display: grid; grid-template-columns: 2fr auto 1fr; gap: 20px; align-items: stretch }
+.group { display: flex; flex-direction: column; gap: 12px; min-width: 0 }
+.group > .card { flex: 1 }
+.ghead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap }
+.num { font: 700 15px var(--display); width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--cyan); color: var(--cyan); display: grid; place-items: center; flex: none; align-self: center }
+.gtitle { font: 600 18px var(--display) }
+.gsub { color: var(--muted); font-size: 14px }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1 }
+.arrow { display: flex; align-items: center; justify-content: center; padding-top: 40px; color: var(--cyan) }
+.arrow svg { width: 56px; height: 24px }
+.howto { font-size: 14px; color: var(--muted) }
+.howto summary { cursor: pointer; color: var(--ink); font-weight: 600; padding: 4px 0 }
+.howto summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; border-radius: 4px }
+.howto ol { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 6px }
+.howto p { margin: 8px 0 0; font-size: 14px }
+.howto code { font: 500 12px var(--mono); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere }
 
 .price { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel) }
 .price > div { padding: 24px; border-right: 1px solid var(--line); min-width: 0 }
@@ -96,7 +112,7 @@ h2 { font: 700 clamp(28px, 3.6vw, 38px)/1.1 var(--display); font-stretch: 112%; 
 .price .amt small { font-size: 15px; color: var(--muted) }
 .price p { margin: 0; color: var(--muted); font-size: 15px }
 .price .best { box-shadow: inset 0 3px 0 var(--cyan) }
-.launch { margin: -20px 0 28px; padding: 14px 18px; border: 1px solid var(--amber); border-radius: 10px; color: var(--amber); max-width: 46em }
+.launch { margin: -16px 0 32px; padding: 14px 18px; border: 1px solid var(--amber); border-radius: 10px; color: var(--amber); max-width: 46em }
 .note { margin-top: 16px; color: var(--muted); font-size: 15px }
 
 .faq { display: grid; gap: 0; max-width: 760px }
@@ -110,8 +126,10 @@ footer span { margin-right: auto }
 
 @media (max-width: 820px) {
   .hero .wrap { grid-template-columns: 1fr; padding-block: 44px }
-  .steps, .dl, .price { grid-template-columns: 1fr }
+  .steps, .price { grid-template-columns: 1fr }
   .facts { grid-template-columns: 1fr; gap: 16px }
+  .groups, .pair { grid-template-columns: 1fr }
+  .arrow { padding: 0; transform: rotate(90deg) }
   .price > div { border-right: 0; border-bottom: 1px solid var(--line) }
   .price > div:last-child { border-bottom: 0 }
 }
@@ -210,29 +228,48 @@ footer span { margin-right: auto }
   <section id="download">
     <div class="wrap">
       <h2>Download</h2>
-      <p class="lead">You need the computer app on the computer and the WindowWarp app on the device that shows the picture.</p>
-      <p class="launch">We're launching step by step. The Linux app is available now. The Android app is being reviewed by Google Play and will appear here once it's approved. Windows follows soon in the Microsoft Store. Until then the Linux app has no device to send to yet.</p>
-      <div class="dl">
-        <div class="card">
-          <span class="tag">Coming soon</span>
-          <h3>Windows</h3>
-          <p>Windows 10 and 11. Uses your graphics card to encode, so games keep their frame rate.</p>
-          <span class="meta">Microsoft Store · free</span>
-          <span class="btn soon">Coming soon</span>
+      <p class="lead">You need two apps: one on the computer that sends the picture, and one on the device that shows it.</p>
+      <p class="launch">We're launching step by step. The Linux app is available now. The Android app is being reviewed by Google Play, and the Windows app by the Microsoft Store. They will appear here once they're approved. Until then the Linux app has no device to send to yet.</p>
+      <div class="groups">
+        <div class="group">
+          <div class="ghead"><span class="num">1</span><span class="gtitle">On your computer</span><span class="gsub">sends the screen</span></div>
+          <div class="pair">
+            <div class="card">
+              <span class="tag review">In review at Microsoft Store</span>
+              <h3>Windows</h3>
+              <p>Windows 10 and 11. Uses your graphics card to encode, so games keep their frame rate.</p>
+              <span class="meta">Microsoft Store · free</span>
+              <span class="btn soon">Coming soon</span>
+            </div>
+            <div class="card">
+              <span class="tag ok">Available</span>
+              <h3>Linux</h3>
+              <p>KDE Plasma and GNOME on Wayland, including Steam Deck in desktop mode.</p>
+              <span class="meta">AppImage · free</span>
+              <a class="btn main" href="https://github.com/WindowWarp/windowwarp.github.io/releases/latest/download/WindowWarp-x86_64.AppImage">Download AppImage</a>
+              <details class="howto">
+                <summary>How to install</summary>
+                <ol>
+                  <li>Download <code>WindowWarp-x86_64.AppImage</code> and put it where you want to keep it, for example in your home folder.</li>
+                  <li>Make it executable: right-click › Properties › Permissions › <em>Allow executing file as program</em>. Or in a terminal: <code>chmod +x WindowWarp-x86_64.AppImage</code></li>
+                  <li>Double-click it. The first time, your desktop asks which screen to share: pick one and allow it.</li>
+                  <li>Optional: under General, turn on <em>Start when you sign in</em>.</li>
+                </ol>
+                <p>Nothing else to install. WindowWarp tells you when there is an update and installs it with one click.</p>
+              </details>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <span class="tag ok">Available</span>
-          <h3>Linux</h3>
-          <p>KDE Plasma and GNOME on Wayland, including Steam Deck in desktop mode.</p>
-          <span class="meta">AppImage · free</span>
-          <a class="btn main" href="https://github.com/WindowWarp/windowwarp.github.io/releases/latest/download/WindowWarp-x86_64.AppImage">Download AppImage</a>
-        </div>
-        <div class="card">
-          <span class="tag">In review at Google Play</span>
-          <h3>Android TV &amp; phone</h3>
-          <p>Android TV, Chromecast with Google TV and Android phones. Android 8 or newer.</p>
-          <span class="meta">Google Play · 7 days free</span>
-          <span class="btn soon">Coming soon</span>
+        <div class="arrow" aria-hidden="true"><svg viewBox="0 0 56 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12h46" stroke-dasharray="2 5"/><path d="M42 5l8 7-8 7"/></svg></div>
+        <div class="group">
+          <div class="ghead"><span class="num">2</span><span class="gtitle">On your TV or phone</span><span class="gsub">shows it</span></div>
+          <div class="card">
+            <span class="tag review">In review at Google Play</span>
+            <h3>Android TV &amp; phone</h3>
+            <p>Android TV, Chromecast with Google TV and Android phones. Android 8 or newer.</p>
+            <span class="meta">Google Play · 7 days free</span>
+            <span class="btn soon">Coming soon</span>
+          </div>
         </div>
       </div>
     </div>
