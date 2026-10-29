@@ -54,10 +54,10 @@ nav a:hover { color: var(--ink) }
 .cta { display: flex; gap: 12px; flex-wrap: wrap }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; border: 1px solid var(--line) }
 .btn.main { background: var(--ink); color: var(--bg); border-color: var(--ink) }
-.facts { display: flex; gap: 28px; margin-top: 36px; flex-wrap: wrap }
-.facts div { display: grid }
-.facts strong { font: 500 22px/1.1 var(--mono); font-variant-numeric: tabular-nums }
-.facts span { font-size: 13px; color: var(--muted) }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 36px }
+.facts div { display: grid; gap: 4px; align-content: start }
+.facts strong { font: 700 17px/1.2 var(--display); font-stretch: 105% }
+.facts span { font-size: 13px; line-height: 1.4; color: var(--muted) }
 
 .stage { position: relative; min-width: 0 }
 .stage svg { width: 100%; height: auto; display: block }
@@ -110,6 +110,7 @@ footer span { margin-right: auto }
 @media (max-width: 820px) {
   .hero .wrap { grid-template-columns: 1fr; padding-block: 44px }
   .steps, .dl, .price { grid-template-columns: 1fr }
+  .facts { grid-template-columns: 1fr; gap: 16px }
   .price > div { border-right: 0; border-bottom: 1px solid var(--line) }
   .price > div:last-child { border-bottom: 0 }
 }
