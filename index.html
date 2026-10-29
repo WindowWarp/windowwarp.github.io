@@ -95,6 +95,7 @@ h2 { font: 700 clamp(28px, 3.6vw, 38px)/1.1 var(--display); font-stretch: 112%; 
 .price .amt small { font-size: 15px; color: var(--muted) }
 .price p { margin: 0; color: var(--muted); font-size: 15px }
 .price .best { box-shadow: inset 0 3px 0 var(--cyan) }
+.launch { margin: -20px 0 28px; padding: 14px 18px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); max-width: 46em }
 .note { margin-top: 16px; color: var(--muted); font-size: 15px }
 
 .faq { display: grid; gap: 0; max-width: 760px }
@@ -148,9 +149,9 @@ footer span { margin-right: auto }
           <a class="btn" href="#how">How it works</a>
         </div>
         <div class="facts">
-          <div><strong>~20 ms</strong><span>computer to TV, measured</span></div>
-          <div><strong>60–120 fps</strong><span>as fast as the screen allows</span></div>
-          <div><strong>Stereo</strong><span>sound up to 320 kbit/s</span></div>
+          <div><strong>Very low latency</strong><span>around 15 ms in our tests (Chromecast, cable)</span></div>
+          <div><strong>High refresh rate</strong><span>as fast as your screen allows, 120 Hz and beyond</span></div>
+          <div><strong>High-quality sound</strong><span>up to 320 kbit/s</span></div>
         </div>
       </div>
 
@@ -208,6 +209,7 @@ footer span { margin-right: auto }
     <div class="wrap">
       <h2>Download</h2>
       <p class="lead">You need the computer app on the computer and the WindowWarp app on the device that shows the picture.</p>
+      <p class="launch">We're launching step by step. The Linux app is available now. The Android app is being reviewed by Google Play and will appear here once it's approved. Windows follows soon in the Microsoft Store. Until then the Linux app has no device to send to yet.</p>
       <div class="dl">
         <div class="card">
           <span class="tag">Coming soon</span>
@@ -217,14 +219,14 @@ footer span { margin-right: auto }
           <span class="btn soon">Coming soon</span>
         </div>
         <div class="card">
-          <span class="tag">Coming soon</span>
+          <span class="tag ok">Available</span>
           <h3>Linux</h3>
           <p>KDE Plasma and GNOME on Wayland, including Steam Deck in desktop mode.</p>
           <span class="meta">AppImage · free</span>
-          <span class="btn soon">Coming soon</span>
+          <a class="btn main" href="https://github.com/WindowWarp/windowwarp.github.io/releases/latest/download/WindowWarp-x86_64.AppImage">Download AppImage</a>
         </div>
         <div class="card">
-          <span class="tag">Coming soon</span>
+          <span class="tag">In review at Google Play</span>
           <h3>Android TV &amp; phone</h3>
           <p>Android TV, Chromecast with Google TV and Android phones. Android 8 or newer.</p>
           <span class="meta">Google Play · 7 days free</span>
@@ -241,7 +243,7 @@ footer span { margin-right: auto }
       <div class="price">
         <div><strong>Free</strong><div class="amt">€0</div><p>30 minutes per day after the trial. Every feature included.</p></div>
         <div><strong>Year</strong><div class="amt">€5.99 <small>/ year</small></div><p>No time limit. Cancel any time in Google Play.</p></div>
-        <div class="best"><strong>Lifetime</strong><div class="amt">€17.99</div><p>Pay once, keep it. Works on all your devices with the same Google account.</p></div>
+        <div class="best"><strong>Lifetime</strong><div class="amt">€14.99</div><p>Pay once, keep it. Works on all your devices with the same Google account.</p></div>
       </div>
       <p class="note">No account, no ads and no data sent anywhere. The picture goes straight from your computer to your TV.</p>
     </div>
