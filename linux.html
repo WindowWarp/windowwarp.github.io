@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Install WindowWarp on Linux: download the AppImage, make it executable and start it. KDE Plasma, GNOME and Steam Deck.">
+<link rel="icon" href="icon.svg">
+<title>WindowWarp for Linux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;112,800;100,500;100,600&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: left-aligned hero with a live "cable" drawing to the right, then a working page: steps, downloads, price, questions. Brand colours come from the app itself. */
+:root {
+  --bg: #F3F6F8;
+  --panel: #FFFFFF;
+  --ink: #0E1620;
+  --muted: #56636F;
+  --line: #D5DDE3;
+  --cyan: #0098A3;
+  --green: #12A46C;
+  --amber: #9A6A00;
+  --screen: #0B0E14;
+  --display: "Archivo", "Arial Narrow", sans-serif;
+  --body: "Instrument Sans", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0B0E14; --panel: #131922; --ink: #E6EDF3; --muted: #9AA4B2; --line: #26303C;
+  --cyan: #00D8E6; --green: #2EE59D; --amber: #FFD27A; --screen: #05070B; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0B0E14; --panel: #131922; --ink: #E6EDF3; --muted: #9AA4B2; --line: #26303C;
+  --cyan: #00D8E6; --green: #2EE59D; --amber: #FFD27A; --screen: #05070B; color-scheme: dark }
+
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--body); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: inherit }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px }
+
+/* top bar */
+header { border-bottom: 1px solid var(--line) }
+header .wrap { display: flex; align-items: center; gap: 24px; padding-block: 18px; flex-wrap: wrap }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto }
+.brand svg { width: 34px; height: 34px }
+.brand b { font: 700 20px/1 var(--display); font-stretch: 112%; letter-spacing: -.01em }
+nav { display: flex; gap: 22px; font-weight: 500; color: var(--muted); flex-wrap: wrap }
+nav a { text-decoration: none }
+nav a:hover { color: var(--ink) }
+
+/* hero */
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding-block: 72px 64px }
+.hero h1 { font: 800 clamp(40px, 6vw, 68px)/1 var(--display); font-stretch: 112%; letter-spacing: -.02em; margin: 0 0 20px; text-wrap: balance }
+.hero h1 span { color: var(--cyan) }
+.hero p { font-size: 19px; color: var(--muted); max-width: 34em; margin: 0 0 28px }
+.cta { display: flex; gap: 12px; flex-wrap: wrap }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; border: 1px solid var(--line) }
+.btn.main { background: var(--ink); color: var(--bg); border-color: var(--ink) }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 36px }
+.facts div { display: grid; gap: 4px; align-content: start }
+.facts strong { font: 700 17px/1.2 var(--display); font-stretch: 105% }
+.facts span { font-size: 13px; line-height: 1.4; color: var(--muted) }
+
+.stage { position: relative; min-width: 0 }
+.stage svg { width: 100%; height: auto; display: block }
+.packet { animation: travel 1.6s linear infinite }
+.packet:nth-of-type(2) { animation-delay: -.53s }
+.packet:nth-of-type(3) { animation-delay: -1.06s }
+@keyframes travel { from { offset-distance: 0% } to { offset-distance: 100% } }
+@media (prefers-reduced-motion: reduce) { .packet { animation: none; offset-distance: 50% } }
+
+/* sections */
+section { padding-block: 64px; border-top: 1px solid var(--line) }
+h2 { font: 700 clamp(28px, 3.6vw, 38px)/1.1 var(--display); font-stretch: 112%; letter-spacing: -.015em; margin: 0 0 8px; text-wrap: balance }
+.lead { color: var(--muted); margin: 0 0 36px; max-width: 40em }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; list-style: none; padding: 0; margin: 0; counter-reset: s }
+.steps li { counter-increment: s; border-top: 2px solid var(--ink); padding-top: 16px }
+.steps li::before { content: "Step " counter(s); font: 500 12px var(--mono); color: var(--muted); letter-spacing: .06em; text-transform: uppercase }
+.steps h3 { font: 600 20px/1.25 var(--display); font-stretch: 100%; margin: 6px 0 6px }
+.steps p { margin: 0; color: var(--muted) }
+
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0 }
+.card h3 { margin: 0; font: 600 19px/1.2 var(--display); font-stretch: 100% }
+.card p { margin: 0; color: var(--muted); font-size: 15px; flex: 1 }
+.card .meta { font: 500 12px var(--mono); color: var(--muted) }
+.card .btn { justify-content: center }
+.btn.soon { color: var(--muted); border-style: dashed; cursor: default }
+.tag { align-self: flex-start; font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted) }
+.tag.ok { color: var(--green); border-color: currentColor }
+.tag.review { color: var(--amber); border-color: currentColor }
+.groups { display: grid; grid-template-columns: 2fr auto 1fr; gap: 20px; align-items: stretch }
+.group { display: flex; flex-direction: column; gap: 12px; min-width: 0 }
+.group > .card { flex: 1 }
+.ghead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap }
+.num { font: 700 15px var(--display); width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--cyan); color: var(--cyan); display: grid; place-items: center; flex: none; align-self: center }
+.gtitle { font: 600 18px var(--display) }
+.gsub { color: var(--muted); font-size: 14px }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1 }
+.arrow { display: flex; align-items: center; justify-content: center; padding-top: 40px; color: var(--cyan) }
+.arrow svg { width: 56px; height: 24px }
+.howlink { font-size: 14px; font-weight: 600; color: var(--cyan); text-decoration: none; align-self: center }
+.howlink:hover { text-decoration: underline }
+.kinds { display: flex; gap: 6px; flex-wrap: wrap }
+.kinds span { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px; border-radius: 6px; background: var(--bg); border: 1px solid var(--line); color: var(--muted) }
+.guide { max-width: 760px }
+.guide h1 { font: 800 clamp(34px, 5vw, 52px)/1.05 var(--display); font-stretch: 112%; letter-spacing: -.02em; margin: 0 0 14px; text-wrap: balance }
+.guide h2 { margin-top: 0 }
+.guide .lead { margin-bottom: 24px }
+.guide ol, .guide ul { padding-left: 22px; display: grid; gap: 10px; margin: 0 }
+.guide li::marker { color: var(--cyan); font-weight: 600 }
+.guide p { color: var(--muted); margin: 0 0 12px }
+.guide code { font: 500 13px var(--mono); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; overflow-wrap: anywhere }
+.guide dl { display: grid; gap: 14px; margin: 0 }
+.guide dt { font-weight: 600 }
+.guide dd { margin: 2px 0 0; color: var(--muted) }
+
+.price { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel) }
+.price > div { padding: 24px; border-right: 1px solid var(--line); min-width: 0 }
+.price > div:last-child { border-right: 0 }
+.price .amt { font: 500 34px/1 var(--mono); margin: 10px 0 6px; font-variant-numeric: tabular-nums }
+.price .amt small { font-size: 15px; color: var(--muted) }
+.price p { margin: 0; color: var(--muted); font-size: 15px }
+.price .best { box-shadow: inset 0 3px 0 var(--cyan) }
+.launch { margin: -16px 0 32px; padding: 14px 18px; border: 1px solid var(--amber); border-radius: 10px; color: var(--amber); max-width: 46em }
+.note { margin-top: 16px; color: var(--muted); font-size: 15px }
+
+.faq { display: grid; gap: 0; max-width: 760px }
+details { border-bottom: 1px solid var(--line); padding-block: 16px }
+summary { cursor: pointer; font-weight: 600; font-size: 17px }
+details p { color: var(--muted); margin: 10px 0 0 }
+
+footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px }
+footer .wrap { display: flex; gap: 24px; padding-block: 28px; flex-wrap: wrap }
+footer span { margin-right: auto }
+
+@media (max-width: 820px) {
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 44px }
+  .steps, .price { grid-template-columns: 1fr }
+  .facts { grid-template-columns: 1fr; gap: 16px }
+  .groups, .pair { grid-template-columns: 1fr }
+  .arrow { padding: 0; transform: rotate(90deg) }
+  .price > div { border-right: 0; border-bottom: 1px solid var(--line) }
+  .price > div:last-child { border-bottom: 0 }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="WindowWarp home">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00D8E6"/><stop offset="1" stop-color="#2EE59D"/></linearGradient></defs>
+        <rect x="9" y="9" width="34" height="24" rx="4" fill="none" stroke="url(#g)" stroke-width="3"/>
+        <path d="M22 15.5v11l9-5.5z" fill="url(#g)"/>
+        <path d="M2 15h5M0 21h7M3 27h4" stroke="url(#g)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M20 39h12" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <b>WindowWarp</b>
+    </a>
+    <nav>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#download">Download</a>
+      <a href="index.html#price">Price</a>
+      <a href="index.html#questions">Questions</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section style="border-top:0">
+    <div class="wrap guide">
+      <h1>WindowWarp for Linux</h1>
+      <p class="lead">Free. One file, nothing else to install. Works on KDE Plasma and GNOME on Wayland, and on the Steam Deck in desktop mode.</p>
+      <a class="btn main" href="https://github.com/WindowWarp/windowwarp.github.io/releases/latest/download/WindowWarp-x86_64.AppImage">Download AppImage</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap guide">
+      <h2>Install</h2>
+      <ol>
+        <li>Download <code>WindowWarp-x86_64.AppImage</code> and put it where you want to keep it, for example in your home folder.</li>
+        <li>Make it executable: right-click › Properties › Permissions › <em>Allow executing file as program</em>. Or in a terminal: <code>chmod +x WindowWarp-x86_64.AppImage</code></li>
+        <li>Double-click it. The first time, your desktop asks which screen to share: pick one and allow it. WindowWarp remembers your choice.</li>
+        <li>Optional: under General, turn on <em>Start when you sign in</em>. WindowWarp then waits in the tray.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap guide">
+      <h2>Then on your TV, phone or tablet</h2>
+      <p>Install WindowWarp Receiver from Google Play, choose Search on the device, pick your computer and click Allow on the computer. From then on it connects by itself.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap guide">
+      <h2>What you need</h2>
+      <ul>
+        <li>A Wayland desktop: KDE Plasma or GNOME. Steam Deck in desktop mode works too.</li>
+        <li>A graphics card from NVIDIA, AMD or Intel, for fast encoding.</li>
+        <li>A 64-bit PC (x86_64) with a recent distribution, such as Ubuntu 24.04, Linux Mint 22, Fedora or Arch.</li>
+        <li>The computer and the device on the same home network, by Wi-Fi or cable.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap guide">
+      <h2>Updates</h2>
+      <p>WindowWarp checks for a new version when it starts. A line at the top of the window tells you, and one click installs it and restarts the app.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap guide">
+      <h2>Problems</h2>
+      <dl>
+        <div><dt>Nothing happens when I double-click it</dt><dd>The file is not executable yet. See step 2.</dd></div>
+        <div><dt>The device does not find my computer</dt><dd>Check that both are on the same network, and that a firewall allows TCP port 5859 and UDP port 5860.</dd></div>
+        <div><dt>I moved the AppImage and it no longer starts when I sign in</dt><dd>Open it once from its new place. <em>Start when you sign in</em> follows it.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap guide">
+      <h2>Remove</h2>
+      <p>Turn off <em>Start when you sign in</em>, quit WindowWarp from the tray and delete the AppImage file. Your settings are in <code>~/.config/rdv88/windowwarp.conf</code> and the folder <code>~/.config/windowwarp</code>; delete those too if you want nothing left behind.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 WindowWarp</span>
+    <a href="privacy.html">Privacy</a>
+    <a href="https://github.com/WindowWarp/windowwarp.github.io/issues">Contact</a>
+  </div>
+</footer>
+</body>
+</html>

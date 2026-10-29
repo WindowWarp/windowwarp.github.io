@@ -98,12 +98,21 @@ h2 { font: 700 clamp(28px, 3.6vw, 38px)/1.1 var(--display); font-stretch: 112%; 
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; flex: 1 }
 .arrow { display: flex; align-items: center; justify-content: center; padding-top: 40px; color: var(--cyan) }
 .arrow svg { width: 56px; height: 24px }
-.howto { font-size: 14px; color: var(--muted) }
-.howto summary { cursor: pointer; color: var(--ink); font-weight: 600; padding: 4px 0 }
-.howto summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; border-radius: 4px }
-.howto ol { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 6px }
-.howto p { margin: 8px 0 0; font-size: 14px }
-.howto code { font: 500 12px var(--mono); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere }
+.howlink { font-size: 14px; font-weight: 600; color: var(--cyan); text-decoration: none; align-self: center }
+.howlink:hover { text-decoration: underline }
+.kinds { display: flex; gap: 6px; flex-wrap: wrap }
+.kinds span { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px; border-radius: 6px; background: var(--bg); border: 1px solid var(--line); color: var(--muted) }
+.guide { max-width: 760px }
+.guide h1 { font: 800 clamp(34px, 5vw, 52px)/1.05 var(--display); font-stretch: 112%; letter-spacing: -.02em; margin: 0 0 14px; text-wrap: balance }
+.guide h2 { margin-top: 0 }
+.guide .lead { margin-bottom: 24px }
+.guide ol, .guide ul { padding-left: 22px; display: grid; gap: 10px; margin: 0 }
+.guide li::marker { color: var(--cyan); font-weight: 600 }
+.guide p { color: var(--muted); margin: 0 0 12px }
+.guide code { font: 500 13px var(--mono); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; overflow-wrap: anywhere }
+.guide dl { display: grid; gap: 14px; margin: 0 }
+.guide dt { font-weight: 600 }
+.guide dd { margin: 2px 0 0; color: var(--muted) }
 
 .price { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel) }
 .price > div { padding: 24px; border-right: 1px solid var(--line); min-width: 0 }
@@ -247,16 +256,7 @@ footer span { margin-right: auto }
               <p>KDE Plasma and GNOME on Wayland, including Steam Deck in desktop mode.</p>
               <span class="meta">AppImage · free</span>
               <a class="btn main" href="https://github.com/WindowWarp/windowwarp.github.io/releases/latest/download/WindowWarp-x86_64.AppImage">Download AppImage</a>
-              <details class="howto">
-                <summary>How to install</summary>
-                <ol>
-                  <li>Download <code>WindowWarp-x86_64.AppImage</code> and put it where you want to keep it, for example in your home folder.</li>
-                  <li>Make it executable: right-click › Properties › Permissions › <em>Allow executing file as program</em>. Or in a terminal: <code>chmod +x WindowWarp-x86_64.AppImage</code></li>
-                  <li>Double-click it. The first time, your desktop asks which screen to share: pick one and allow it.</li>
-                  <li>Optional: under General, turn on <em>Start when you sign in</em>.</li>
-                </ol>
-                <p>Nothing else to install. WindowWarp tells you when there is an update and installs it with one click.</p>
-              </details>
+              <a class="howlink" href="linux.html">How to install on Linux →</a>
             </div>
           </div>
         </div>
@@ -265,8 +265,9 @@ footer span { margin-right: auto }
           <div class="ghead"><span class="num">2</span><span class="gtitle">On your TV or phone</span><span class="gsub">shows it</span></div>
           <div class="card">
             <span class="tag review">In review at Google Play</span>
-            <h3>Android TV &amp; phone</h3>
-            <p>Android TV, Chromecast with Google TV and Android phones. Android 8 or newer.</p>
+            <h3>WindowWarp Receiver</h3>
+            <p>One app for every Android screen: TVs with Google TV or Android TV, Chromecast with Google TV, phones and tablets. Android 8 or newer.</p>
+            <div class="kinds"><span>TV</span><span>Phone</span><span>Tablet</span></div>
             <span class="meta">Google Play · 7 days free</span>
             <span class="btn soon">Coming soon</span>
           </div>
