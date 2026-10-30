@@ -5,7 +5,7 @@
 <h1 align="center">WindowWarp</h1>
 
 <p align="center">
-  The wireless cable for your computer.<br>
+  Your computer, on every Android screen.<br>
   Your screen and sound on an Android TV, Google TV, Chromecast, phone or tablet, over your home network.
 </p>
 
