@@ -7,11 +7,11 @@ Maintainer: WindowWarp <WindowWarp@pm.me>
 Installed-Size: 118011
 Depends: libc6 (>= 2.39), libva2, libdrm2, libpipewire-0.3-0t64 | libpipewire-0.3-0, libgl1, libegl1, libfontconfig1, libfreetype6
 Filename: pool/main/windowwarp_1.0.2-1_amd64.deb
-Size: 47340806
-MD5sum: 406a07d07c9665b084ebfc1a497baf67
-SHA1: d733fb81794f7ffdf6c407806e5290ca7f74dedc
-SHA256: ac3680f04b7b4c1390c828c5121fcf6ea3c5299b05ec2d74af27c6695d5ea4ce
-SHA512: 7755237fb0edfd3f866d250d687e4a07f7166325c4778cf5206cf5d83782c5f07e57e8ec73385ae795841882cc233177a668641897da526461ed60b62619d965
+Size: 47340476
+MD5sum: e7113d6c7fcfd71857800283926c7cc9
+SHA1: 76bef68a86a05aeb530ec9c721481b8021575fba
+SHA256: 5fd3035accaf11ac0afd94ece0c4a4de85fc5360bade8191da7b7bb4c123a483
+SHA512: ffad295527a2156302bd1390a4534ef50c456b4e9f8838c0b936a2993e5dd67030286e3b6c1bc555bd64a2762e31c93449d09d5b7067c484bdbac22b7c1090bb
 Homepage: https://windowwarp.github.io
 Description: Your computer, on your TV, phone and tablet.
  Streams your screen and sound to the WindowWarp Receiver app on Android TV,
