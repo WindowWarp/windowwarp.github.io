@@ -89,9 +89,17 @@ h2 { font: 700 clamp(28px, 3.6vw, 38px)/1.1 var(--display); font-stretch: 112%; 
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0 }
 .card h3 { margin: 0; font: 600 19px/1.2 var(--display); font-stretch: 100% }
 .card p { margin: 0; color: var(--muted); font-size: 15px; flex: 1 }
-.card .meta { font: 500 12px var(--mono); color: var(--muted) }
+.card .meta { font: 600 12px var(--mono); color: var(--green) }
 .card .btn { justify-content: center }
 .btn.soon { color: var(--muted); border-style: dashed; cursor: default }
+.badge { display: inline-flex; align-self: start; height: 60px }
+.badge img { height: 60px; width: auto; display: block }
+.badge.soon { opacity: .4; filter: grayscale(1); cursor: default }
+.badge-soon { font: 600 13px var(--mono); color: var(--amber) }
+.badge.appimage { align-items: center; gap: 10px; padding: 0 20px 0 12px; background: #202020; border: 1px solid #555; border-radius: 8px; color: #fff; text-decoration: none; line-height: 1.1 }
+.badge.appimage img { height: 38px }
+.badge.appimage small { display: block; font-size: 12px; opacity: .85 }
+.badge.appimage b { display: block; font-size: 22px; font-weight: 600 }
 .tag { align-self: flex-start; font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted) }
 .tag.ok { color: var(--green); border-color: currentColor }
 .tag.review { color: var(--amber); border-color: currentColor }
@@ -274,14 +282,14 @@ footer span { margin-right: auto }
               <h3>Windows</h3>
               <p>Windows 10 and 11. Uses your graphics card to encode, so games keep their frame rate.</p>
               <span class="meta">Microsoft Store · free</span>
-              <a class="btn main" href="https://apps.microsoft.com/detail/9N1T7NS7FXMN">Get it from Microsoft Store</a>
+              <a class="badge" href="https://apps.microsoft.com/detail/9N1T7NS7FXMN"><img src="badges/microsoft-store.svg" alt="Get it from Microsoft"></a>
             </div>
             <div class="card">
               <span class="tag ok">Available</span>
               <h3>Linux</h3>
               <p>KDE Plasma and GNOME on Wayland, including Steam Deck in desktop mode.<br><a class="howlink" href="linux.html">How to install on Linux →</a></p>
               <span class="meta">AppImage · free</span>
-              <a class="btn main" href="https://github.com/WindowWarp/windowwarp.github.io/releases/latest/download/WindowWarp-x86_64.AppImage">Download AppImage</a>
+              <a class="badge appimage" href="https://github.com/WindowWarp/windowwarp.github.io/releases/latest/download/WindowWarp-x86_64.AppImage"><img src="badges/appimage.svg" alt=""><span><small>Download as an</small><b>AppImage</b></span></a>
             </div>
           </div>
         </div>
@@ -294,7 +302,8 @@ footer span { margin-right: auto }
             <p>One app for every Android screen: TVs with Google TV or Android TV, Chromecast with Google TV, phones and tablets. Android 8 or newer.</p>
             <div class="kinds"><span>TV</span><span>Phone</span><span>Tablet</span></div>
             <span class="meta">Google Play · 7 days free</span>
-            <span class="btn soon">Coming soon</span>
+            <span class="badge-soon">Coming soon</span>
+            <span class="badge soon" aria-hidden="true"><img src="badges/google-play.png" alt=""></span>
           </div>
         </div>
       </div>
