@@ -169,6 +169,7 @@ footer span { margin-right: auto }
 .lx-pane { display: none; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 24px; flex-direction: column; gap: 16px }
 .lx-pane.on { display: flex }
 .lx-pane > p { margin: 0; color: var(--muted) }
+.lx-goto { align-self: start; background: none; border: 1px solid var(--cyan); color: var(--cyan); border-radius: 8px; padding: 10px 16px; font: 600 15px var(--body); cursor: pointer }
 .lx-soon { font: 600 13px var(--mono); color: var(--amber) !important }
 .lx-code { position: relative; background: #06090E; border: 1px solid var(--line); border-radius: 10px; padding: 14px 92px 14px 16px; font: 500 13px/1.7 var(--mono); color: #CFE8EA; white-space: pre-wrap; overflow-wrap: anywhere }
 .lx-code .p { color: #00D8E6; user-select: none }
@@ -317,9 +318,8 @@ footer span { margin-right: auto }
 
       <div class="lx-pane" id="arch" role="tabpanel">
         <p class="lx-soon">Coming soon</p>
-        <p>WindowWarp will be in the AUR as <b>windowwarp-bin</b>, for Arch, Manjaro, EndeavourOS, CachyOS and other Arch-based systems. Until then, use the AppImage.</p>
-        <div class="lx-code"><span class="p">$ </span>yay -S windowwarp-bin<button class="lx-copy" type="button">Copy</button></div>
-        <div class="lx-ur"><div><h4>Updates</h4><p>Come with <code>yay -Syu</code>.</p></div><div><h4>Remove</h4><p><code>sudo pacman -R windowwarp-bin</code></p></div></div>
+        <p>WindowWarp is coming to the AUR as <b>windowwarp-bin</b>, for Arch, Manjaro, EndeavourOS, CachyOS and other Arch-based systems. Until then, the AppImage works on all of them.</p>
+        <button class="lx-goto" type="button" data-goto="appimage">Get the AppImage →</button>
       </div>
     </div>
 
@@ -363,6 +363,7 @@ document.querySelectorAll('.lx-tabs button').forEach(b => b.addEventListener('cl
   document.querySelectorAll('.lx-tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
   document.querySelectorAll('.lx-pane').forEach(p => p.classList.toggle('on', p.id === b.dataset.t));
 }));
+document.querySelectorAll('.lx-goto').forEach(g => g.addEventListener('click', () => document.querySelector('.lx-tabs button[data-t="' + g.dataset.goto + '"]').click()));
 document.querySelectorAll('.lx-copy').forEach(c => c.addEventListener('click', async () => {
   const text = [...c.parentNode.childNodes].filter(n => n !== c).map(n => n.textContent).join('').replace(/^\$ /gm, '').trim();
   try { await navigator.clipboard.writeText(text); c.textContent = 'Copied'; c.classList.add('done') } catch (e) { c.textContent = 'Select and copy' }
