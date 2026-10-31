@@ -17,3 +17,22 @@ Description: Your computer, on your TV, phone and tablet.
  Streams your screen and sound to the WindowWarp Receiver app on Android TV,
  Google TV, phones and tablets, with very low delay.
 
+Package: windowwarp
+Architecture: amd64
+Version: 1.0.2-2
+Priority: optional
+Section: video
+Maintainer: WindowWarp <WindowWarp@pm.me>
+Installed-Size: 118011
+Depends: libc6 (>= 2.39), libgpg-error0, libva2, libdrm2, libpipewire-0.3-0t64 | libpipewire-0.3-0, libgl1, libegl1, libfontconfig1, libfreetype6
+Filename: pool/main/windowwarp_1.0.2-2_amd64.deb
+Size: 47340856
+MD5sum: a3d7445692ff12651e6035acdc389d0e
+SHA1: 15039d1a47e51cf85e52fb7273e4e25c1bf134a3
+SHA256: d1dfac97d1e9738ecd82cc4f9e127b140735c949bcb32e30d96e86088f73d0ee
+SHA512: 701249dc74d5651d840c64df9366df48bc01e3f9e2b8344a7b10c6fdfabb5e51f327bd7e2ff1c1b4a9f55b172e85a6f6e5ff2e6a285fbe7a2e9d52d7d6f81361
+Homepage: https://windowwarp.github.io
+Description: Your computer, on your TV, phone and tablet.
+ Streams your screen and sound to the WindowWarp Receiver app on Android TV,
+ Google TV, phones and tablets, with very low delay.
+
