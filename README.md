@@ -17,11 +17,17 @@
 
 ## Download
 
+<p>
+  <a href="https://windowwarp.github.io/linux.html"><img src="badges/linux.svg" height="56" alt="Get it for Linux"></a>
+  <a href="https://apps.microsoft.com/detail/9N1T7NS7FXMN"><img src="badges/microsoft-store.svg" height="56" alt="Get it from Microsoft"></a>
+  <img src="badges/google-play.png" height="56" alt="Google Play (coming soon)">
+</p>
+
 | | |
 |---|---|
-| **Linux** | [WindowWarp-x86_64.AppImage](https://github.com/WindowWarp/windowwarp.github.io/releases/latest/download/WindowWarp-x86_64.AppImage), free. How to install: [windowwarp.github.io/linux.html](https://windowwarp.github.io/linux.html) |
-| **Windows** | Microsoft Store, coming soon |
-| **Android TV, phone and tablet** | WindowWarp Receiver on Google Play, coming soon |
+| **Linux** | Free. AppImage, apt (Ubuntu, Debian, Mint), dnf (Fedora, Nobara, RHEL 10) or the AUR (coming soon): [how to install](https://windowwarp.github.io/linux.html) |
+| **Windows** | Free in the [Microsoft Store](https://apps.microsoft.com/detail/9N1T7NS7FXMN) |
+| **Android TV, phone and tablet** | WindowWarp Receiver on Google Play, coming soon. 7 days free |
 
 You need two apps: the computer app on the computer that sends the picture, and WindowWarp Receiver on the device that shows it.
 
