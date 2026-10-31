@@ -21,7 +21,7 @@
   <tr>
     <td><b>Linux</b></td>
     <td><a href="https://windowwarp.github.io/linux.html"><img src="badges/linux.svg" height="48" alt="Get it for Linux"></a></td>
-    <td>Free. AppImage, apt (Ubuntu, Debian, Mint), dnf (Fedora, Nobara, RHEL 10) or the AUR (coming soon).</td>
+    <td>Free. AppImage, apt (Ubuntu, Debian), dnf (Fedora, Nobara, RHEL 10) or the AUR (coming soon).</td>
   </tr>
   <tr>
     <td><b>Windows</b></td>
