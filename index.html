@@ -160,9 +160,65 @@ footer span { margin-right: auto }
   .price > div { border-right: 0; border-bottom: 1px solid var(--line) }
   .price > div:last-child { border-bottom: 0 }
 }
+/* ── v2 look: altijd donker, aurora-achtergrond, glas ── */
+:root,:root[data-theme]{--bg:#070A10;--panel:rgba(19,25,34,.62);--ink:#E6EDF3;--muted:#9AA4B2;--line:rgba(120,150,180,.18);--cyan:#00D8E6;--green:#2EE59D;--amber:#FFD27A;--violet:#7C5CFF;--screen:#05070B;color-scheme:dark}
+body{margin:0;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);animation:drift 22s ease-in-out infinite alternate}
+.b1{width:620px;height:620px;background:radial-gradient(circle,#00D8E6,transparent 65%);top:-180px;right:-120px;opacity:.5}
+.b2{width:520px;height:520px;background:radial-gradient(circle,#7C5CFF,transparent 65%);top:30%;left:-200px;animation-delay:-8s;opacity:.4}
+.b3{width:480px;height:480px;background:radial-gradient(circle,#2EE59D,transparent 65%);bottom:-200px;right:20%;animation-delay:-14s;opacity:.22}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.12)}}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 60% at 60% 20%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 60% 20%,#000 20%,transparent 75%)}
+.noise{position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+header{position:sticky;top:14px;z-index:10;border:0;margin-top:14px}
+header .wrap{border:1px solid var(--line);border-radius:16px;background:rgba(10,14,20,.55);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);padding:12px 18px}
+.brand svg{filter:drop-shadow(0 0 10px rgba(0,216,230,.5))}
+.hero h1{font-weight:800;letter-spacing:-.03em}
+.hero h1 span{background:linear-gradient(100deg,var(--cyan) 10%,var(--green) 50%,var(--violet) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{border-radius:12px;transition:transform .2s,box-shadow .2s;background:rgba(255,255,255,.04)}
+.btn.main{color:#03130D;border:0;background:linear-gradient(135deg,var(--green),var(--cyan));box-shadow:0 8px 30px -8px rgba(46,229,157,.6),inset 0 1px 0 rgba(255,255,255,.4)}
+.btn:hover{transform:translateY(-2px)}.btn.main:hover{box-shadow:0 14px 40px -8px rgba(46,229,157,.8)}
+.facts div{padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:var(--panel);backdrop-filter:blur(10px)}
+.stage svg{overflow:visible;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6))}
+.packet{offset-rotate:0deg;animation:fly 2.4s linear infinite}
+.packet:nth-of-type(2){animation-delay:-.8s}.packet:nth-of-type(3){animation-delay:-1.6s}
+@keyframes fly{from{offset-distance:0%;opacity:0}10%,90%{opacity:1}to{offset-distance:100%;opacity:0}}
+.beam{stroke-dasharray:6 8;animation:dash 1s linear infinite}@keyframes dash{to{stroke-dashoffset:-14}}
+.float{animation:bob 6s ease-in-out infinite}.float2{animation:bob 7s ease-in-out infinite reverse}@keyframes bob{50%{transform:translateY(-6px)}}
+.sun{animation:sun 8s linear infinite}@keyframes sun{to{transform:translateX(-40px)}}
+section>.wrap::before{border-top:0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.video{border-radius:20px;border-color:rgba(0,216,230,.3);box-shadow:0 30px 80px -30px rgba(0,216,230,.45)}
+.video .play{background:linear-gradient(135deg,var(--green),var(--cyan));box-shadow:0 8px 30px -6px rgba(0,216,230,.7)}
+.steps li{position:relative;border:1px solid var(--line);border-radius:20px;padding:24px;background:var(--panel);backdrop-filter:blur(12px);transition:transform .25s,border-color .25s}
+.steps li::before{color:var(--cyan)}
+.card,.steps li,.price{position:relative}
+.card::after,.steps li::after,.price::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(0,216,230,.5),transparent 40%,transparent 60%,rgba(124,92,255,.4));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.card{border-radius:20px;backdrop-filter:blur(12px);transition:transform .25s,border-color .25s}
+.card:hover,.steps li:hover{transform:translateY(-4px);border-color:rgba(0,216,230,.4)}
+.num{box-shadow:0 0 14px rgba(0,216,230,.45)}
+.arrow{position:relative}
+.arrowdisc{position:relative;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:rgba(10,14,20,.8);border:1px solid rgba(0,216,230,.45);box-shadow:0 0 24px -4px rgba(0,216,230,.6),inset 0 1px 0 rgba(255,255,255,.08)}
+.arrowdisc::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(0,216,230,.4);animation:ring 2s ease-out infinite}
+@keyframes ring{from{transform:scale(.9);opacity:1}to{transform:scale(1.35);opacity:0}}
+.arrowdisc svg{width:26px;height:26px;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(3px)}}
+.price{border-radius:20px;backdrop-filter:blur(12px)}
+.price .best{background:linear-gradient(160deg,rgba(0,216,230,.14),rgba(124,92,255,.10) 70%);box-shadow:inset 0 3px 0 var(--cyan),0 0 40px -10px rgba(0,216,230,.4)}
+.launch{border-radius:14px;background:rgba(255,210,122,.06)}
+.kinds span{background:rgba(255,255,255,.03)}
+details{padding-inline:4px}
+summary{list-style:none;display:flex;justify-content:space-between}summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--cyan);font:600 20px var(--mono)}details[open] summary::after{content:"–"}
+footer{border-top:1px solid var(--line)}
+.price{overflow:visible}.price .best{position:relative}.bestbadge{position:absolute;top:-11px;right:20px;font:600 11px var(--mono);padding:4px 10px;border-radius:99px;background:var(--green);color:#03130D;box-shadow:0 0 16px rgba(46,229,157,.5)}
+.kicker{font:600 12px var(--mono);color:var(--cyan);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.note{text-align:center}
+@media (prefers-reduced-motion:reduce){.blob,.beam,.float,.float2,.sun,.packet{animation:none}}
 </style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div><div class="noise"></div></div>
 
 <header>
   <div class="wrap">
@@ -203,45 +259,74 @@ footer span { margin-right: auto }
       </div>
 
       <div class="stage" aria-hidden="true">
-        <svg viewBox="0 0 520 360">
-          <!-- laptop -->
-          <rect x="18" y="150" width="170" height="108" rx="8" fill="var(--screen)" stroke="var(--line)" stroke-width="2"/>
-          <rect x="28" y="160" width="150" height="88" rx="3" fill="#121A24"/>
-          <rect x="38" y="172" width="70" height="8" rx="2" fill="#00D8E6" opacity=".8"/>
-          <rect x="38" y="186" width="110" height="6" rx="2" fill="#2A3442"/>
-          <rect x="38" y="198" width="90" height="6" rx="2" fill="#2A3442"/>
-          <rect x="38" y="214" width="56" height="22" rx="4" fill="#2EE59D" opacity=".85"/>
-          <path d="M4 262h198l-12 12H16z" fill="var(--line)"/>
-          <!-- tv -->
-          <rect x="262" y="40" width="244" height="150" rx="8" fill="var(--screen)" stroke="var(--line)" stroke-width="2"/>
-          <rect x="274" y="52" width="220" height="126" rx="3" fill="#121A24"/>
-          <rect x="290" y="70" width="102" height="12" rx="3" fill="#00D8E6" opacity=".8"/>
-          <rect x="290" y="92" width="160" height="9" rx="3" fill="#2A3442"/>
-          <rect x="290" y="109" width="132" height="9" rx="3" fill="#2A3442"/>
-          <rect x="290" y="130" width="82" height="32" rx="5" fill="#2EE59D" opacity=".85"/>
-          <path d="M366 190v18M406 190v18M344 210h84" stroke="var(--line)" stroke-width="4" stroke-linecap="round"/>
-          <!-- path -->
-          <path id="route" d="M190 200 C 240 200, 230 120, 262 116" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-dasharray="4 6" opacity=".7"/>
-          <g fill="var(--green)">
-            <circle class="packet" r="5" style="offset-path: path('M190 200 C 240 200, 230 120, 262 116')"/>
-            <circle class="packet" r="5" style="offset-path: path('M190 200 C 240 200, 230 120, 262 116')"/>
-            <circle class="packet" r="5" style="offset-path: path('M190 200 C 240 200, 230 120, 262 116')"/>
-          </g>
-          <!-- phone -->
-          <rect x="330" y="244" width="140" height="74" rx="12" fill="var(--screen)" stroke="var(--line)" stroke-width="2"/>
-          <rect x="342" y="252" width="116" height="58" rx="4" fill="#121A24"/>
-          <rect x="352" y="262" width="54" height="7" rx="2" fill="#00D8E6" opacity=".8"/>
-          <rect x="352" y="276" width="84" height="5" rx="2" fill="#2A3442"/>
-          <rect x="352" y="288" width="40" height="14" rx="3" fill="#2EE59D" opacity=".85"/>
-          <path d="M190 230 C 250 240, 280 280, 330 281" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-dasharray="4 6" opacity=".45"/>
-          <text x="190" y="336" fill="var(--muted)" font-family="JetBrains Mono, monospace" font-size="12">same home network · Wi-Fi or cable</text>
-        </svg>
+        <svg viewBox="0 0 560 400">
+    <defs>
+      <linearGradient id="game" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B1B5E"/><stop offset=".55" stop-color="#C0477A"/><stop offset=".56" stop-color="#1A1030"/><stop offset="1" stop-color="#0B0618"/></linearGradient>
+      <radialGradient id="glow"><stop offset="0" stop-color="#00D8E6" stop-opacity=".55"/><stop offset="1" stop-color="#00D8E6" stop-opacity="0"/></radialGradient>
+      <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3A4656"/><stop offset="1" stop-color="#151B24"/></linearGradient>
+      <linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".14"/><stop offset=".4" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <symbol id="scr" viewBox="0 0 220 124">
+        <rect width="220" height="124" fill="url(#game)"/>
+        <g class="sun"><circle cx="150" cy="58" r="20" fill="#FFB86B"/><circle cx="190" cy="58" r="20" fill="#FFB86B"/></g>
+        <path d="M0 70 L40 48 L70 62 L110 40 L150 64 L190 46 L220 60 V124 H0Z" fill="#160C2C"/>
+        <g stroke="#00D8E6" stroke-opacity=".5"><path d="M0 90H220M0 104H220M0 120H220M110 70L20 124M110 70L200 124M110 70V124"/></g>
+        <rect x="8" y="8" width="44" height="6" rx="3" fill="#2EE59D"/><rect x="8" y="17" width="28" height="4" rx="2" fill="#fff" opacity=".5"/>
+      </symbol>
+    </defs>
+
+    <ellipse cx="380" cy="130" rx="190" ry="120" fill="url(#glow)"/>
+
+    <!-- laptop -->
+    <g class="float2">
+      <rect x="14" y="170" width="190" height="122" rx="10" fill="url(#frame)"/>
+      <rect x="24" y="180" width="170" height="102" rx="4" fill="#000"/>
+      <use href="#scr" x="24" y="180" width="170" height="102" preserveAspectRatio="none"/>
+      <rect x="24" y="180" width="170" height="102" rx="4" fill="url(#gloss)"/>
+      <path d="M0 296h218l-14 14H14z" fill="#2A3442"/><rect x="88" y="296" width="42" height="4" rx="2" fill="#0B0E14"/>
+      <circle cx="109" cy="175" r="1.6" fill="#2EE59D"/>
+    </g>
+
+    <!-- tv -->
+    <g class="float">
+      <rect x="260" y="30" width="286" height="170" rx="10" fill="url(#frame)"/>
+      <rect x="270" y="40" width="266" height="150" rx="4" fill="#000"/>
+      <use href="#scr" x="270" y="40" width="266" height="150" preserveAspectRatio="none"/>
+      <rect x="270" y="40" width="266" height="150" rx="4" fill="url(#gloss)"/>
+      
+      <path d="M380 200l-14 22M426 200l14 22M350 224h106" stroke="#2A3442" stroke-width="5" stroke-linecap="round"/>
+    </g>
+
+    <!-- phone -->
+    <g class="float2">
+      <rect x="330" y="262" width="168" height="88" rx="16" fill="url(#frame)"/>
+      <rect x="342" y="270" width="144" height="72" rx="6" fill="#000"/>
+      <use href="#scr" x="342" y="270" width="144" height="72" preserveAspectRatio="none"/>
+      <rect x="342" y="270" width="144" height="72" rx="6" fill="url(#gloss)"/>
+    </g>
+
+    <!-- stralen -->
+    <path class="beam" d="M206 214 C 250 214, 235 130, 268 120" fill="none" stroke="var(--cyan)" stroke-width="2.5" opacity=".9"/>
+    <path class="beam" d="M206 250 C 260 256, 290 300, 330 304" fill="none" stroke="var(--green)" stroke-width="2.5" opacity=".7"/>
+    <g fill="#fff">
+      <circle class="packet" r="4" style="offset-path:path('M206 214 C 250 214, 235 130, 268 120');filter:drop-shadow(0 0 6px #00D8E6)"/>
+      <circle class="packet" r="4" style="offset-path:path('M206 214 C 250 214, 235 130, 268 120');filter:drop-shadow(0 0 6px #00D8E6)"/>
+      <circle class="packet" r="4" style="offset-path:path('M206 214 C 250 214, 235 130, 268 120');filter:drop-shadow(0 0 6px #00D8E6)"/>
+    </g>
+    <g fill="#fff">
+      <circle class="packet" r="3.5" style="offset-path:path('M206 250 C 260 256, 290 300, 330 304');filter:drop-shadow(0 0 6px #2EE59D)"/>
+      <circle class="packet" r="3.5" style="offset-path:path('M206 250 C 260 256, 290 300, 330 304');filter:drop-shadow(0 0 6px #2EE59D)"/>
+    </g>
+
+    
+    <text x="14" y="380" fill="var(--muted)" font-family="JetBrains Mono" font-size="12">same home network · Wi-Fi or cable</text>
+  </svg>
       </div>
     </div>
   </div>
 
   <section id="how">
     <div class="wrap">
+      <div class="kicker">How it works</div>
       <h2>Set up once, then it just connects</h2>
       <p class="lead">You pair a device one time. After that the TV finds your computer by itself whenever both are on.</p>
       <!-- The video loads from YouTube (no-cookie) only after a click; until then it is just our own picture. -->
@@ -260,19 +345,21 @@ footer span { margin-right: auto }
 
   <section id="price">
     <div class="wrap">
+      <div class="kicker">Price</div>
       <h2>Try it free for 7 days</h2>
       <p class="lead">The computer app is always free. WindowWarp Receiver is free for 7 days; after that you choose, through Google Play.</p>
       <div class="price">
         <div><strong>Free</strong><div class="amt">€0</div><p>30 minutes per day after the trial. Every feature included.</p></div>
+        <div class="best"><span class="bestbadge">BEST VALUE</span><strong>Lifetime</strong><div class="amt">€14.99</div><p>Pay once, keep it. Works on all your devices with the same Google account.</p></div>
         <div><strong>Year</strong><div class="amt">€5.99 <small>/ year</small></div><p>No time limit. Cancel any time in Google Play.</p></div>
-        <div class="best"><strong>Lifetime</strong><div class="amt">€14.99</div><p>Pay once, keep it. Works on all your devices with the same Google account.</p></div>
       </div>
-      <p class="note">No account, no ads and no data sent anywhere. The picture goes straight from your computer to your TV.</p>
+      <p class="note">🔒 No account, no ads and no data sent anywhere. The picture goes straight from your computer to your TV.</p>
     </div>
   </section>
 
   <section id="download">
     <div class="wrap">
+      <div class="kicker">Download</div>
       <h2>Download</h2>
       <p class="lead">You need two apps: one on the computer that sends the picture, and one on the device that shows it.</p>
       <p class="launch">We're launching step by step. The Windows and Linux apps are available now. The Android app is being reviewed by Google Play and will appear here once it's approved. Until then the computer apps have no device to send to yet.</p>
@@ -297,7 +384,7 @@ footer span { margin-right: auto }
             </div>
           </div>
         </div>
-        <div class="arrow" aria-hidden="true"><svg viewBox="0 0 56 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12h46" stroke-dasharray="2 5"/><path d="M42 5l8 7-8 7"/></svg></div>
+        <div class="arrow" aria-hidden="true"><span class="arrowdisc"><svg viewBox="0 0 24 24" fill="none" stroke="url(#ag)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00D8E6"/><stop offset="1" stop-color="#2EE59D"/></linearGradient></defs><path d="M4 12h15M13 6l6 6-6 6"/></svg></span></div>
         <div class="group">
           <div class="ghead"><span class="num">2</span><span class="gtitle">On your receiving device</span></div>
           <div class="card">
@@ -317,6 +404,7 @@ footer span { margin-right: auto }
 
   <section id="questions">
     <div class="wrap">
+      <div class="kicker">Questions</div>
       <h2>Questions</h2>
       <div class="faq">
         <details open><summary>Does it work over the internet?</summary><p>No. Your computer and device have to be on the same home network. That is what keeps the delay this low.</p></details>
