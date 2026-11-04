@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WindowWarp Terms of Service</title>
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700&family=Instrument+Sans:wght@400;600&display=swap">
+<style>
+:root { --bg: #F3F6F8; --ink: #0E1620; --muted: #56636F; --line: #D5DDE3; color-scheme: light }
+@media (prefers-color-scheme: dark) { :root { --bg: #0B0E14; --ink: #E6EDF3; --muted: #9AA4B2; --line: #26303C; color-scheme: dark } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.65 "Instrument Sans", system-ui, sans-serif }
+main { max-width: 680px; margin: 0 auto; padding: 48px 16px 64px }
+h1 { font: 700 40px/1.1 "Archivo", "Arial Narrow", sans-serif; font-stretch: 112%; margin: 0 0 6px }
+h2 { font-size: 19px; margin: 32px 0 6px }
+p, li { color: var(--muted) }
+a { color: inherit }
+.back { display: inline-block; margin-bottom: 32px; color: var(--muted) }
+/* ── v2 look ── */
+:root,:root{--bg:#070A10;--ink:#E6EDF3;--muted:#9AA4B2;--line:rgba(120,150,180,.18);--cyan:#00D8E6;--green:#2EE59D;--violet:#7C5CFF;color-scheme:dark}
+body{overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);animation:drift 22s ease-in-out infinite alternate}
+.b1{width:620px;height:620px;background:radial-gradient(circle,#00D8E6,transparent 65%);top:-180px;right:-120px;opacity:.5}
+.b2{width:520px;height:520px;background:radial-gradient(circle,#7C5CFF,transparent 65%);top:30%;left:-200px;animation-delay:-8s;opacity:.4}
+.b3{width:480px;height:480px;background:radial-gradient(circle,#2EE59D,transparent 65%);bottom:-200px;right:20%;animation-delay:-14s;opacity:.22}
+@keyframes drift{to{transform:translate(60px,40px) scale(1.12)}}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 80% 60% at 60% 20%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 60% 20%,#000 20%,transparent 75%)}
+.noise{position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+main{position:relative;margin:40px auto 64px;padding:40px 40px 44px;max-width:720px;background:rgba(19,25,34,.62);border:1px solid var(--line);border-radius:22px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+main::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(140deg,rgba(0,216,230,.5),transparent 40%,transparent 60%,rgba(124,92,255,.4));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+h1{font-weight:800;letter-spacing:-.02em;background:linear-gradient(100deg,var(--ink) 30%,var(--cyan) 75%,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{color:var(--cyan)}
+li::marker{color:var(--cyan)}
+.back{text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.04);transition:color .2s,border-color .2s}
+.back:hover{color:var(--ink);border-color:rgba(0,216,230,.45)}
+@media (max-width:600px){main{margin:16px;padding:28px 20px}}
+@media (prefers-reduced-motion:reduce){.blob{animation:none}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid"></div><div class="noise"></div></div>
+<main>
+<a class="back" href="./">← WindowWarp</a>
+<h1>Terms of Service</h1>
+<p>Last updated: 4 November 2026</p>
+
+<h2>Who we are</h2>
+<p>WindowWarp is made and sold by WindowWarp. Contact: <a href="mailto:WindowWarp@pm.me">WindowWarp@pm.me</a>. By installing or using WindowWarp you agree to these terms.</p>
+
+<h2>What WindowWarp is</h2>
+<p>WindowWarp streams the picture and sound of your own computer to your TV, phone or tablet in your own network. It needs the free WindowWarp PC app and the WindowWarp Receiver app.</p>
+
+<h2>Free use and trial</h2>
+<ul>
+<li>The PC app is free.</li>
+<li>The Receiver app has a free trial of 7 days. After the trial you can keep using it for free for 30 minutes per day.</li>
+<li>For unlimited use you can buy a yearly subscription or a lifetime licence in the app.</li>
+</ul>
+
+<h2>Purchases and refunds</h2>
+<ul>
+<li>All payments are handled by Google Play. Prices are shown in the app and on Google Play before you buy.</li>
+<li>The yearly subscription renews automatically until you cancel it in Google Play. You keep access until the end of the period you paid for.</li>
+<li>A lifetime licence is a one-time purchase for your Google account. It stays valid as long as the app is offered.</li>
+<li>Refunds follow the Google Play refund policy. If something does not work, please contact us first; we are happy to help.</li>
+<li>Your legal rights as a consumer are not affected by these terms.</li>
+</ul>
+
+<h2>Your use</h2>
+<ul>
+<li>You are responsible for what you stream. Only stream content you have the right to show.</li>
+<li>Do not use WindowWarp for anything illegal, and do not try to break, copy or resell the apps.</li>
+<li>Some protected video (DRM) cannot be streamed. This is not a fault of WindowWarp.</li>
+</ul>
+
+<h2>No guarantee</h2>
+<p>We do our best to make WindowWarp fast and reliable, but we cannot guarantee that it works on every device or network, or without interruptions. The apps are provided "as is". As far as the law allows, we are not liable for indirect damage or lost data. Our total liability is limited to the amount you paid for WindowWarp in the last 12 months.</p>
+
+<h2>Privacy</h2>
+<p>How we handle data is described in our <a href="privacy.html">privacy statement</a>.</p>
+
+<h2>Changes</h2>
+<p>We may update these terms. The date at the top shows the latest version. Important changes will be mentioned in the app or on this page.</p>
+</main>
+</body>
+</html>
